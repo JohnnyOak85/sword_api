@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "ts-node src/app.ts",
+        "test": "mocha --require ts-node/register test/tasks.spec.ts"
     },
     "keywords": [],
     "author": "",
@@ -12,19 +13,29 @@
     "dependencies": {
         "@hapi/boom": "^10.0.1",
         "@hapi/hapi": "^21.3.0",
+        "amqp-connection-manager": "^4.1.11",
         "bcrypt": "^5.1.0",
         "dotenv": "^16.0.3",
         "fs-extra": "^11.1.1",
         "hapi-auth-jwt2": "^10.4.0",
         "joi": "^17.9.1",
         "jsonwebtoken": "^9.0.0",
+        "mysql2": "^3.2.0",
+        "sequelize": "^6.30.0",
         "uuid": "^9.0.0"
     },
     "devDependencies": {
+        "@types/amqp-connection-manager": "^3.4.1",
+        "@types/amqplib": "^0.10.1",
         "@types/bcrypt": "^5.0.0",
+        "@types/chai": "^4.3.4",
         "@types/fs-extra": "^11.0.1",
         "@types/jsonwebtoken": "^9.0.1",
+        "@types/mocha": "^10.0.1",
         "@types/node": "^18.15.10",
-        "@types/uuid": "^9.0.1"
+        "@types/uuid": "^9.0.1",
+        "chai": "^4.3.7",
+        "mocha": "^10.2.0",
+        "ts-node": "^10.9.1"
     }
 }
