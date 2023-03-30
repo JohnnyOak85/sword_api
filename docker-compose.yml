@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+    db:
+        image: mysql:latest
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+            MYSQL_DATABASE: myapp
+        ports:
+            - '3306:3306'
+
+    app:
+        build: .
+        depends_on:
+            - db
+        #     - message-broker
+        ports:
+            - '3000:3000'
+
+    # message-broker:
+    #     image: rabbitmq:latest
+    #     restart: always
+    #     ports:
+    #         - '5672:5672'
+    #         - '15672:15672'
