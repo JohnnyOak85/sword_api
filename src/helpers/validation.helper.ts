@@ -1,8 +1,8 @@
-import { getUser } from '.';
+import { findUserById } from '../classes';
 import { User } from '../interfaces';
 
 export const validate = async (decoded: User) => {
-    const user = getUser(decoded.id);
+    const user = await findUserById(decoded.id);
 
     if (!user || decoded.role !== user.role) {
         return { isValid: false };

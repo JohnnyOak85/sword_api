@@ -1,6 +1,6 @@
 import { Request, ResponseToolkit } from '@hapi/hapi';
-import { createTask, deleteTask, getTasks, updateTask } from '../helpers';
-import { TaskData, UserRole } from '../interfaces';
+import { createTask, deleteTask, getAllTasks, getUserTasks, updateTask } from '../classes';
+import { Task, UserRole } from '../interfaces';
 import { TaskSchema } from '../schemas';
 
 export const TaskRoutes = [
@@ -11,7 +11,9 @@ export const TaskRoutes = [
             try {
                 const { id, role } = request.auth.credentials as { id: string; role: UserRole };
 
-                return h.response(getTasks(id, role));
+                return h.response(
+                    role === 'manager' ? await getAllTasks() : await getUserTasks(id)
+                );
             } catch (error) {
                 throw error;
             }
@@ -25,9 +27,9 @@ export const TaskRoutes = [
         path: '/tasks',
         handler: async (request: Request, h: ResponseToolkit) => {
             try {
-                const { id } = request.auth.credentials as { id: string; role: UserRole };
+                const { id } = request.auth.credentials as { id: number; role: UserRole };
 
-                return h.response(createTask(id, request.payload as TaskData));
+                return h.response(createTask(id, request.payload as string));
             } catch (error) {
                 throw error;
             }
@@ -44,7 +46,7 @@ export const TaskRoutes = [
             try {
                 const { id } = request.auth.credentials as { id: string; role: UserRole };
 
-                return h.response(updateTask(id, request.params.id, request.payload as TaskData));
+                return h.response(updateTask(id, request.payload as Task));
             } catch (error) {
                 throw error;
             }
@@ -59,7 +61,7 @@ export const TaskRoutes = [
         path: '/tasks/{id}',
         handler: async (request: Request, h: ResponseToolkit) => {
             try {
-                return h.response(deleteTask(request.params.id));
+                return h.response(await deleteTask(request.params.id));
             } catch (error) {
                 throw error;
             }

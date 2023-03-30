@@ -8,7 +8,7 @@ export const LoginRoutes = [
         method: 'PUT',
         path: '/login',
         handler: async (request: Request, h: ResponseToolkit) => {
-            const token = login(request.payload as UserCredentials);
+            const token = await login(request.payload as UserCredentials);
 
             return h.response('OK').header('Authorization', `Bearer ${token}`);
         },
