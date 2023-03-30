@@ -19,14 +19,14 @@
 
 7. Create MySQL Database.
 
-    - Use a Hapi.js plugin such as hapi-sequelize or hapi-mongoose to interact with your database
+8. Integrate with Database (Done..ish)
 
-8. Create a local development environment using docker containing this service and a MySQL database.
+9. Create a local development environment using docker containing this service and a MySQL database.
 
-9. Use a message broker to decouple notification logic from the application flow. (e.g. RabbitMQ)
+10. Use a message broker to decouple notification logic from the application flow. (e.g. RabbitMQ)
 
     - Use the server.publish() method to notify the manager of each task performed by the technician.
     - Use a Hapi.js plugin such as hapi-rabbit to interact with RabbitMQ.
     - Use the server.subscription() method to subscribe to the messages published to RabbitMQ.
 
-10. Create Kubernetes object files needed to deploy this application.
+11. Create Kubernetes object files needed to deploy this application.
