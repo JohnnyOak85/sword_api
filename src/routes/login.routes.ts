@@ -1,5 +1,5 @@
 import { Request, ResponseToolkit } from '@hapi/hapi';
-import { login } from '../helpers';
+import { login } from '../controllers';
 import { UserCredentials } from '../interfaces';
 import { CredentialsSchema } from '../schemas';
 

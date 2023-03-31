@@ -1,5 +1,5 @@
 import { Request, ResponseToolkit } from '@hapi/hapi';
-import { createTask, deleteTask, getAllTasks, getUserTasks, updateTask } from '../classes';
+import { createTask, deleteTask, getAllTasks, getUserTasks, updateTask } from '../controllers';
 import { Task, UserRole } from '../interfaces';
 import { TaskSchema } from '../schemas';
 
