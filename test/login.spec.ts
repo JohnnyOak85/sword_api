@@ -1,7 +1,11 @@
-import { expect } from 'chai';
+import { expect, use } from 'chai';
 import { describe, it, beforeEach, afterEach } from 'mocha';
 import { Server } from '@hapi/hapi';
 import { init } from '../src/helpers';
+import sinonChai from 'sinon-chai';
+import Sinon, { stub } from 'sinon';
+
+use(sinonChai);
 
 describe('Login', () => {
     let app: Server;
@@ -16,13 +20,16 @@ describe('Login', () => {
 
     describe('PUT /login', () => {
         it('should login', async () => {
+            const handlerStub = stub().returns('token');
+
             const { headers, payload, statusCode } = await app.inject({
                 method: 'PUT',
-                url: '/login',
-                payload: {
-                    username: 'alice',
-                    password: 'password123'
-                }
+                url: '/login'
+                // handler: handlerStub
+                // payload: {
+                //     username: 'alice',
+                //     password: 'password123'
+                // }
             });
 
             expect(statusCode).to.equal(200);

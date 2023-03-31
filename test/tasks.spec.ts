@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import { Server } from '@hapi/hapi';
 import { init } from '../src/helpers';
-// import { beforeEach, afterEach } from 'node:test';
+import { Task } from '../src/interfaces';
 
 describe('Server', () => {
     let app: Server;
@@ -32,12 +32,10 @@ describe('Server', () => {
                 headers: { authorization: headers.authorization }
             });
 
-            // TODO Use Sinon for mock data
-            expect(statusCode).to.equal(200);
-            expect(result).to.be.an;
-            expect(result.length).to.equal(2);
+            const tasks = [...(result as Array<Task>)];
 
-            result.forEach();
+            expect(statusCode).to.equal(200);
+            expect(tasks.length).to.equal(2);
         });
 
         it('should not allow read function without token', async () => {
@@ -49,34 +47,5 @@ describe('Server', () => {
             expect(statusCode).to.equal(401);
             expect(statusMessage).to.equal('Unauthorized');
         });
-
-        // it('', async () => {});
-        // it('', async () => {});
-        // it('', async () => {});
-        // it('', async () => {});
     });
-
-    // describe('POST /tasks', () => {
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    // });
-
-    // describe('PUT  /tasks/{id}', () => {
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    // });
-
-    // describe('DELETE  /tasks{id}', () => {
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    //     it('', async () => {});
-    // });
 });
