@@ -16,11 +16,11 @@ When I took this challenge, I was also doing some home improvement, so it didn't
 
 ## Main API
 
-Built using TypeScript and Hapi. Manually tested all I could, seems to be working as intended when I used hardcoded mock data.
+Built using TypeScript and Hapi. Manually tested all I could, seems to be working as intended.
 
 ## Database
 
-Tried to get a MySQL database online but couldn't, so I couldn't test it with actual data. I'm more comfortable with CouchDB.
+Tried to get a MySQL database online but couldn't. I'm more comfortable with CouchDB.
 
 ## Tests
 

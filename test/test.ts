@@ -1,8 +1,8 @@
 import { expect } from 'chai';
 import { describe, it } from 'mocha';
 import { Server } from '@hapi/hapi';
-import { init } from '../src/app';
 import { beforeEach, afterEach } from 'node:test';
+import { init } from '../src/helpers';
 
 describe('Server', () => {
     let app: Server;

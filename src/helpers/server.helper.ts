@@ -16,21 +16,13 @@ export const init = async () => {
         }
 
         const sequelize = new Sequelize({
-            database: 'sql7607881',
+            database: process.env.DB_NAME!,
             dialect: 'mysql',
-            host: 'sql7.freesqldatabase.com',
-            password: 'gyzTpPG4dc',
-            username: 'sql7607881'
+            host: process.env.DB_HOST!,
+            password: process.env.DB_PASS!,
+            port: Number(process.env.DB_PORT!),
+            username: process.env.DB_USER!
         });
-
-        // const sequelize = new Sequelize({
-        //     database: process.env.DB_NAME!,
-        //     dialect: 'mysql',
-        //     host: process.env.DB_HOST!,
-        //     password: process.env.DB_PASS!,
-        //     port: Number(process.env.DB_PORT!),
-        //     username: process.env.DB_USER!
-        // });
 
         initClasses(sequelize);
 
