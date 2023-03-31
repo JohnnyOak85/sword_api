@@ -1,4 +1,4 @@
-import { findUserById } from '../classes';
+import { findUserById } from '../controllers';
 import { User } from '../interfaces';
 
 export const validate = async (decoded: User) => {
